@@ -4,8 +4,7 @@
 // To obtain an access token from Mapbox, visit:
 // https://www.mapbox.com/account/access-tokens
 //
-// For the example, the function getAccessToken() is used.
-mapboxgl.accessToken = getAccessToken();
+mapboxgl.accessToken = 'pk.eyJ1IjoiZG1pM3kiLCJhIjoiY2pybmp1ejg3MGwycjQzdXA2amVhMnBldiJ9.MhgRc4GR_mX2hgOQ2hlm5Q';
 
 // Define a map centered on Europe.
 var map = new mapboxgl.Map({
