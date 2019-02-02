@@ -27,6 +27,7 @@ map.on('load', function () {
     }
 
     // Define a GeoJSON source of all countries and their boundaries.
+    //TODO dynamic country loading
     map.addSource('countries', {
         "type": "geojson",
         "data": './countries.json'
