@@ -51,6 +51,20 @@ map.on('load', function () {
             },
             "filter": buildFilter(countries["visited"])
         }, firstSymbolId);
+        map.addLayer({
+            'id': 'country-planning',
+            'type': 'fill',
+            'source': 'countries',
+            'layout': {
+            },
+            'paint': {
+                'fill-opacity': 0.8,
+                'fill-color': 'rgba(0,129,240,0.4)',
+                'fill-outline-color': 'rgb(9,0,240)'
+            },
+            "filter": buildFilter(countries["planning"])
+        }, firstSymbolId);
+
 
     });
 });

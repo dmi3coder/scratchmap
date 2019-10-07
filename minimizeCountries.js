@@ -10,7 +10,7 @@ countries = require('./countries_full.json');
 countries = JSON.parse(countries);
 
 countries.features = countries.features.filter(function (item) {
-    return visited.visited.includes(item.properties.sovereignt)
+    return visited.visited.includes(item.properties.sovereignt) || visited.planning.includes(item.properties.sovereignt)
 });
 
 fs.writeFile("./countries.json", JSON.stringify(countries) , function(err) {
