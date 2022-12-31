@@ -11,7 +11,7 @@ var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
     center: [20, 52.4862], // starting position [lng, lat]
-    zoom: 3 // starting zoom
+    zoom: 2 // starting zoom
 });
 
 map.on('load', function () {
@@ -34,7 +34,7 @@ map.on('load', function () {
     });
 
     // Get the countries I have visited and add them to a new map layer.
-    httpGETRequest("./visited.json", function(countries) {
+    httpGETRequest("./visited.json", function (countries) {
 
         countries = JSON.parse(countries);
 
@@ -42,8 +42,7 @@ map.on('load', function () {
             'id': 'country',
             'type': 'fill',
             'source': 'countries',
-            'layout': {
-            },
+            'layout': {},
             'paint': {
                 'fill-opacity': 0.8,
                 'fill-color': 'rgba(200, 100, 240, 0.4)',
@@ -55,14 +54,25 @@ map.on('load', function () {
             'id': 'country-planning',
             'type': 'fill',
             'source': 'countries',
-            'layout': {
-            },
+            'layout': {},
             'paint': {
                 'fill-opacity': 0.8,
                 'fill-color': 'rgba(0,129,240,0.4)',
                 'fill-outline-color': 'rgb(9,0,240)'
             },
             "filter": buildFilter(countries["planning"])
+        }, firstSymbolId);
+        map.addLayer({
+            'id': 'country-never-visiting',
+            'type': 'fill',
+            'source': 'countries',
+            'layout': {},
+            'paint': {
+                'fill-opacity': 0.8,
+                'fill-color': 'rgba(240,0,0,0.4)',
+                'fill-outline-color': 'rgb(240,0,0)'
+            },
+            "filter": buildFilter(countries["never"])
         }, firstSymbolId);
 
 
@@ -77,9 +87,10 @@ function buildFilter(arr) {
         return filter;
     }
 
-    for(var i = 0; i < arr.length; i += 1) {
+    for (var i = 0; i < arr.length; i += 1) {
         filter.push(arr[i]);
     }
+
 
     return filter;
 }
@@ -92,7 +103,7 @@ function getAccessToken() {
     var isTokenFound = false;
     var accessToken;
 
-    if (typeof(Storage) !== "undefined") {
+    if (typeof (Storage) !== "undefined") {
         accessToken = localStorage.getItem("accessToken");
         if ((accessToken != null) && (accessToken != "null")) {
             isTokenFound = true;
@@ -107,7 +118,7 @@ function getAccessToken() {
         }
 
         // Store it within local storage.
-        if (typeof(Storage) !== "undefined") {
+        if (typeof (Storage) !== "undefined") {
             localStorage.setItem("accessToken", accessToken);
         }
     }
@@ -117,7 +128,7 @@ function getAccessToken() {
 
 function httpGETRequest(requestURL, callback) {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
+    xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
             callback(xmlHttp.responseText);
     }

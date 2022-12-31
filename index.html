@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dmitry's scratchmap</title>
+    <title>Dmytro's scratchmap</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,12 +13,42 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+        .legend {
+          background-color: #fff;
+          border-radius: 3px;
+          bottom: 30px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+          padding: 10px;
+          position: absolute;
+          right: 10px;
+          z-index: 1;
+        }
+
+        .legend h4 {
+          margin: 0 0 10px;
+        }
+
+        .legend div span {
+          border-radius: 50%;
+          display: inline-block;
+          height: 10px;
+          margin-right: 5px;
+          width: 10px;
+        }
     </style>
   </head>
   <body>
     <main>
       <div id="map"></div>
+      <div id="state-legend" class="legend">
+        <h4>Meaning</h4>
+        <div><span style="background-color: rgba(200, 100, 240, 0.4)"></span>Visited</div>
+        <div><span style="background-color: rgba(0,129,240,0.4)"></span>Planning</div>
+        <div><span style="background-color: rgba(240,0,0,0.4)"></span>Will never visit</div>
+      </div>
     </main>
+
     
     <!-- Our custom map script -->
     <script src="./map.js"></script>

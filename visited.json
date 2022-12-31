@@ -9,10 +9,17 @@
     "Austria",
     "Netherlands",
     "Estonia",
-    "Denmark"
+    "Denmark",
+    "Norway",
+    "United States",
+    "Switzerland",
+    "Czech Republic",
+    "Luxembourg"
   ],
   "planning": [
-    "Norway",
-    "Switzerland"
+  ],
+  "never": [
+    "Russian Federation",
+    "Belarus"
   ]
 }
